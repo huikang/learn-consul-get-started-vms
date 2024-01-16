@@ -8,6 +8,24 @@
 #  DATABASE  #
 #------------#
 
+# By default disable these instances
+resource "aws_ec2_instance_state" "database" {
+  instance_id = aws_instance.database.id
+  state       = "stopped"
+}
+resource "aws_ec2_instance_state" "api" {
+  instance_id = aws_instance.api.id
+  state       = "stopped"
+}
+resource "aws_ec2_instance_state" "frontend" {
+  instance_id = aws_instance.frontend.id
+  state       = "stopped"
+}
+resource "aws_ec2_instance_state" "nginx" {
+  instance_id = aws_instance.nginx.id
+  state       = "stopped"
+}
+
 resource "aws_instance" "database" {
   depends_on    = [module.vpc]
   ami           = data.aws_ami.debian-11.id

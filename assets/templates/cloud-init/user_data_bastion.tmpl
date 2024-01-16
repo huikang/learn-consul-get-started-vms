@@ -17,6 +17,8 @@ packages:
   - jq
   - dnsutils
   - tree
+  - unzip
+  - emacs-nox
 write_files:
   - path: /etc/hosts
     content: | 
@@ -46,6 +48,8 @@ runcmd:
  - mkdir -p certs
  - echo "${ssh_public_key}" | base64 -d | zcat > certs/id_rsa.pub
  - echo "${ssh_private_key}" | base64 -d | zcat > certs/id_rsa
+ - chmod 777 /etc/ssh/ssh_config
+ - echo "  StrictHostKeyChecking accept-new" >> /etc/ssh/ssh_config
 # Make scripts executable
  - chown admin:admin *.sh
  - chmod +x *.sh

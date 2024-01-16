@@ -3,6 +3,10 @@ output "ip_bastion" {
   value = aws_instance.bastion.public_ip
 }
 
+output "public_ip_consul_servers" {
+  value = aws_instance.consul_server[*].public_ip
+}
+
 output "connection_string" {
   value = "ssh -i certs/id_rsa.pem admin@`terraform output -raw ip_bastion`"
 }

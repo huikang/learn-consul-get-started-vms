@@ -7,7 +7,7 @@ resource "aws_instance" "consul_server" {
   count                       = var.server_number
   ami                         = data.aws_ami.debian-11.id
   associate_public_ip_address = true
-  instance_type               = "t2.micro"
+  instance_type               = "t2.small"
   key_name                    = aws_key_pair.keypair.id
   vpc_security_group_ids = [
     aws_security_group.ingress-ssh.id,

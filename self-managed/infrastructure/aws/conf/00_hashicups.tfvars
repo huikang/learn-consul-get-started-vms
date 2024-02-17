@@ -1,3 +1,5 @@
+vpc_region = "us-east-2"
+
 # Defines Consul version to install on agents
 consul_version = "latest"
 
